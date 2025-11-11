@@ -1,0 +1,18 @@
+-- Inserção
+INSERT INTO agente (nome, matricula, turno) VALUES
+('Carlos Souza', 'GCM001', 'Diurno'),
+('Fernanda Lima', 'GCM002', 'Noturno');
+
+INSERT INTO autuacao (placa_veiculo, data_autuacao, tipo_infracao, local, id_agente) VALUES
+('ABC1234', '2025-11-01', 'Estacionar em local proibido', 'Rua das Flores', 1);
+
+-- Atualização
+UPDATE autuacao SET local = 'Av. Brasil' WHERE id_autuacao = 1;
+
+-- Remoção
+DELETE FROM autuacao WHERE id_autuacao = 1;
+
+-- Consulta
+SELECT a.nome AS Agente, au.placa_veiculo, au.tipo_infracao, au.local
+FROM autuacao au
+JOIN agente a ON au.id_agente = a.id_agente;
