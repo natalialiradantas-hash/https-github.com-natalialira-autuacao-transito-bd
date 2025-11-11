@@ -1,0 +1,19 @@
+CREATE DATABASE autuacao_transito;
+USE autuacao_transito;
+
+CREATE TABLE agente (
+    id_agente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    matricula VARCHAR(20) UNIQUE NOT NULL,
+    turno ENUM('Diurno', 'Noturno') NOT NULL
+);
+
+CREATE TABLE autuacao (
+    id_autuacao INT AUTO_INCREMENT PRIMARY KEY,
+    placa_veiculo VARCHAR(10) NOT NULL,
+    data_autuacao DATE NOT NULL,
+    tipo_infracao VARCHAR(150) NOT NULL,
+    local VARCHAR(100),
+    id_agente INT,
+    FOREIGN KEY (id_agente) REFERENCES agente(id_agente)
+);
